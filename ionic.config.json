@@ -1,0 +1,7 @@
+{
+  "name": "ms3",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
