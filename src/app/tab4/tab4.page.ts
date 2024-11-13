@@ -1,36 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ToDo } from '../todo';
 
 @Component({
   selector: 'app-tab4',
   templateUrl: './tab4.page.html',
   styleUrls: ['./tab4.page.scss'],
 })
-export class Tab4Page implements OnInit {
-
-  darkMode: boolean;
+export class Tab4Page {
 
   constructor(private alertController: AlertController) {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    this.darkMode = prefersDark.matches;
+
   }
 
-  ngOnInit() {
-    const savedDarkMode = localStorage.getItem('darkMode');
-    if (savedDarkMode !== null) {
-      this.darkMode = savedDarkMode === 'true';
-      this.applyDarkMode();
-    }
-  }
-
-  toggleDarkMode() {
-    this.darkMode = !this.darkMode;
-    this.applyDarkMode();
-    localStorage.setItem('darkMode', this.darkMode.toString());
-  }
-
-  applyDarkMode() {
-    document.body.classList.toggle('dark', this.darkMode);
+  getDefaultTodos(): ToDo[] {
+    return [
+      new ToDo('Pokémon Yellow', 'Ein klassisches Spiel', 'Ash', new Date('2022-01-12'), 'new'),
+      new ToDo('Mega Man X', 'Ein Action-Spiel', 'Rock', new Date('2022-02-15'), 'todo'),
+      new ToDo('The Legend of Zelda', 'Ein Abenteuer-Spiel', 'Link', new Date('2022-03-20'), 'delegate'),
+      new ToDo('Pac-Man', 'Ein Arcade-Klassiker', 'Player1', new Date('2022-04-18'), 'done'),
+      new ToDo('Super Mario World', 'Ein Jump’n’Run-Spiel', 'Mario', new Date('2022-05-25'), 'new')
+    ];
   }
 
   async confirmResetLocalStorage() {
@@ -58,6 +48,6 @@ export class Tab4Page implements OnInit {
   }
 
   resetLocalStorage() {
-    localStorage.clear();
+    localStorage.setItem('todos', JSON.stringify(this.getDefaultTodos()));
     }
 }

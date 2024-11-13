@@ -13,11 +13,17 @@ export class Tab1Page {
   todos: ToDo[] = [];
 
   constructor(private modalController: ModalController) {  // <-- Hier wird der modalController injiziert
+  }
+
+  ngOnInit() {
     this.loadTodos();
   }
 
-  async openAddTodoModal() { // Neues ToDo erstellen
-    // Neues leeres ToDo erstellen
+  ionViewWillEnter() {
+    this.loadTodos();
+  }
+
+  async openAddTodoModal() { 
     const newTodo = new ToDo('', '', '', new Date(), 'new');
 
     // Modal öffnen und das leere ToDo übergeben
@@ -63,27 +69,12 @@ export class Tab1Page {
     return await modal.present();
   }
 
-
-  // LocalStorage ToDo's
-  getDefaultTodos(): ToDo[] {
-    return [
-      new ToDo('Pokémon Yellow', 'Ein klassisches Spiel', 'Ash', new Date('2022-01-12'), 'new'),
-      new ToDo('Mega Man X', 'Ein Action-Spiel', 'Rock', new Date('2022-02-15'), 'todo'),
-      new ToDo('The Legend of Zelda', 'Ein Abenteuer-Spiel', 'Link', new Date('2022-03-20'), 'delegate'),
-      new ToDo('Pac-Man', 'Ein Arcade-Klassiker', 'Player1', new Date('2022-04-18'), 'done'),
-      new ToDo('Super Mario World', 'Ein Jump’n’Run-Spiel', 'Mario', new Date('2022-05-25'), 'new')
-    ];
-  }
-
-
   loadTodos() {
     const storedTodos = localStorage.getItem('todos');
     if (storedTodos) {
       this.todos = JSON.parse(storedTodos).map((todo: any) => 
         new ToDo(todo.title, todo.description, todo.assignee, new Date(todo.dueDate), todo.status.status)
       );
-    } else {
-      this.todos = this.getDefaultTodos();
     }
   }
 
@@ -116,11 +107,4 @@ export class Tab1Page {
   saveTodos() {
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
-
-  // wird gerade nicht benutzt
-  resetLocalStorage() {
-    this.todos = this.getDefaultTodos();
-    this.saveTodos();
-  }
-
 }
