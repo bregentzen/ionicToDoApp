@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { ToDo } from './todo';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToDoService {
-    private todos: ToDo[] = [
-        new ToDo('Task 1', 'Description 1', 'John Doe', new Date('2024-11-15'), 'todo'),
-        new ToDo('Task 2', 'Description 2', 'Jane Doe', new Date('2024-11-16'), 'todo'),
-        new ToDo('Task 3', 'Description 3', 'John Smith', new Date('2024-11-17'), 'delegate')
-      ];
+  private todos: ToDo[] = [];
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.loadTodos();
   }
 
@@ -19,14 +17,36 @@ export class ToDoService {
     return this.todos;
   }
 
+  getDefaultTodos(): Observable<ToDo[]> {
+    return this.http.get<ToDo[]>('assets/DefaultToDo.json');
+  }
+
   private loadTodos() {
-    const todosJson = localStorage.getItem('todos');
-    if (todosJson) {
-      this.todos = JSON.parse(todosJson);
+    const storedTodos = localStorage.getItem('todos');
+    if (storedTodos) {
+      this.todos = JSON.parse(storedTodos).map((todo: any) => 
+        new ToDo(todo.title, todo.description, todo.assignee, new Date(todo.dueDate), todo.status)
+      );
+    } else {
+      this.getDefaultTodos().subscribe(defaultTodos => {
+        this.todos = defaultTodos.map(todo =>
+          new ToDo(todo.title, todo.description, todo.assignee, new Date(todo.dueDate), todo.status.status)
+        );
+        this.saveTodos(this.todos);
+      });
     }
   }
 
-  saveTodos() {
-    localStorage.setItem('todos', JSON.stringify(this.todos));
+  saveTodos(todos: ToDo[]) {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }
+
+  resetLocalStorage() {
+    this.getDefaultTodos().subscribe(defaultTodos => {
+      this.todos = defaultTodos.map(todo =>
+        new ToDo(todo.title, todo.description, todo.assignee, new Date(todo.dueDate), todo.status.status)
+      );
+      this.saveTodos(this.todos);
+    });
   }
 }

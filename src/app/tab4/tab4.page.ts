@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { ToDo } from '../todo';
+import { ToDoService } from '../ToDoService';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-tab4',
@@ -8,19 +9,10 @@ import { ToDo } from '../todo';
   styleUrls: ['./tab4.page.scss'],
 })
 export class Tab4Page {
+  private toDoService: ToDoService;
 
-  constructor(private alertController: AlertController) {
-
-  }
-
-  getDefaultTodos(): ToDo[] {
-    return [
-      new ToDo('Pokémon Yellow', 'Ein klassisches Spiel', 'Ash', new Date('2022-01-12'), 'new'),
-      new ToDo('Mega Man X', 'Ein Action-Spiel', 'Rock', new Date('2022-02-15'), 'todo'),
-      new ToDo('The Legend of Zelda', 'Ein Abenteuer-Spiel', 'Link', new Date('2022-03-20'), 'delegate'),
-      new ToDo('Pac-Man', 'Ein Arcade-Klassiker', 'Player1', new Date('2022-04-18'), 'done'),
-      new ToDo('Super Mario World', 'Ein Jump’n’Run-Spiel', 'Mario', new Date('2022-05-25'), 'new')
-    ];
+  constructor(private alertController: AlertController, private http: HttpClient) {
+    this.toDoService = new ToDoService(this.http);
   }
 
   async confirmResetLocalStorage() {
@@ -38,7 +30,7 @@ export class Tab4Page {
         {
           text: 'Bestätigen',
           handler: () => {
-            this.resetLocalStorage();
+            this.toDoService.resetLocalStorage();
           }
         }
       ]
@@ -46,8 +38,4 @@ export class Tab4Page {
 
     await alert.present();
   }
-
-  resetLocalStorage() {
-    localStorage.setItem('todos', JSON.stringify(this.getDefaultTodos()));
-    }
 }

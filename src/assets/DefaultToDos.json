@@ -1,0 +1,37 @@
+[
+    {
+      "title": "Pokémon Yellow",
+      "description": "Ein klassisches Spiel",
+      "assignee": "Ash",
+      "dueDate": "2022-01-12T00:00:00.000Z",
+      "status": "new"
+    },
+    {
+      "title": "Mega Man X",
+      "description": "Ein Action-Spiel",
+      "assignee": "Rock",
+      "dueDate": "2022-02-15T00:00:00.000Z",
+      "status": "todo"
+    },
+    {
+      "title": "The Legend of Zelda",
+      "description": "Ein Abenteuer-Spiel",
+      "assignee": "Link",
+      "dueDate": "2022-03-20T00:00:00.000Z",
+      "status": "delegate"
+    },
+    {
+      "title": "Pac-Man",
+      "description": "Ein Arcade-Klassiker",
+      "assignee": "Player1",
+      "dueDate": "2022-04-18T00:00:00.000Z",
+      "status": "done"
+    },
+    {
+      "title": "Super Mario World",
+      "description": "Ein Jump’n’Run-Spiel",
+      "assignee": "Mario",
+      "dueDate": "2022-05-25T00:00:00.000Z",
+      "status": "new"
+    }
+  ]
