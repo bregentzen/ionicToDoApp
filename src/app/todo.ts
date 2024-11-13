@@ -21,7 +21,7 @@ export class ToDo {
     status: string;
   
     constructor(status: string) {
-      if (status == 'new' || status === 'todo' || status === 'delegate' || status === 'done') {
+      if (status === 'new' || status === 'todo' || status === 'delegate' || status === 'done') {
         this.status = status;
       }
       else {
