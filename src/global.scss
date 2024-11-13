@@ -25,13 +25,44 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+/* Dark mode palette */
+//@import "@ionic/angular/css/palettes/dark.system.css";
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+/* Custom styles */
+body {
+  background-color: var(--ion-color-dark) !important;
+  color: var(--ion-color-light);
+}
+
+ion-app, ion-content {
+  background-color: var(--ion-color-dark) !important;
+}
+
+ion-header, ion-footer, ion-toolbar {
+  background-color: var(--ion-color-step-50);
+  color: var(--ion-color-light);
+}
+
+ion-button {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-dark);
+
+  &.ion-color-danger {
+    --background: var(--ion-color-danger);
+    --color: var(--ion-color-light);
+  }
+}
+
+ion-item {
+  --background: var(--ion-color-step-100);
+  --color: var(--ion-color-light);
+}
+
+ion-input, ion-textarea, ion-select, ion-datetime {
+  --background: var(--ion-color-step-200);
+  --color: var(--ion-color-dark);
+}
+
+ion-label {
+  color: var(--ion-color-light);
+}

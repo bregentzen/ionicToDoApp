@@ -1,2 +1,41 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+// Define color variables
+:root {
+  --ion-color-primary: #FFD700; /* Gold */
+  --ion-color-primary-rgb: 255, 215, 0;
+
+  --ion-color-secondary: #F5F5DC; /* Beige */
+  --ion-color-secondary-rgb: 245, 245, 220;
+
+  --ion-color-tertiary: #8B4513; /* SaddleBrown */
+  --ion-color-tertiary-rgb: 139, 69, 19;
+
+  --ion-color-success: #32CD32; /* LimeGreen */
+  --ion-color-success-rgb: 50, 205, 50;
+
+  --ion-color-warning: #FFA500; /* Orange */
+  --ion-color-warning-rgb: 255, 165, 0;
+
+  --ion-color-danger: #DC143C; /* Crimson */
+  --ion-color-danger-rgb: 220, 20, 60;
+
+  --ion-color-dark: #3B2F2F; /* Brownish dark */
+  --ion-color-dark-rgb: 59, 47, 47;
+
+  --ion-color-light: #FFFFFF; /* Light color for contrast */
+  --ion-color-light-rgb: 255, 255, 255;
+
+  --ion-background-color: var(--ion-color-dark);
+  --ion-color-step-50: #4A3838;
+  --ion-color-step-100: #594747;
+  --ion-color-step-150: #685656;
+  --ion-color-step-200: #776565;
+  --ion-color-step-250: #867474;
+  --ion-color-step-300: #958383;
+  --ion-color-step-350: #A49292;
+  --ion-color-step-400: #B3A1A1;
+  --ion-color-step-450: #C2B0B0;
+  --ion-color-step-500: #D1BFBF;
+  --ion-color-step-550: #E0CECE;
+  --ion-color-step-600: #EFDDDD;
+  --ion-color-step-650: #FCECEC;
+}

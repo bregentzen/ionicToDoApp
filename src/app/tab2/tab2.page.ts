@@ -16,6 +16,10 @@ export class Tab2Page implements OnInit {
     this.loadTodos();
   }
 
+  ionViewWillEnter() {
+    this.loadTodos();
+  }
+
   loadTodos() {
     const state: String = 'todo';
     this.todos = this.todoService.loadTodos().filter(todo => todo.status === state);

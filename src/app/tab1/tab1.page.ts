@@ -63,6 +63,7 @@ export class Tab1Page {
         const index = this.todos.findIndex((t) => t.id === updatedTodo.id);
         if (index !== -1) {
           this.todos[index] = updatedTodo;
+          this.saveTodos();
         }
       }
     });

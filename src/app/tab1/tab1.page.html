@@ -11,20 +11,21 @@
     </ion-toolbar>
   </ion-header>
   
-    <ion-content color="light">
+    <ion-content>
       <!-- Liste -->
       <ion-list lines="full">
         <ion-item *ngFor="let todo of todos" (click)="openTodoDetails(todo)">
           <ion-label>{{ todo.title }}</ion-label>
-          <ion-buttons slot="end">
+          <ion-item slot="end">
             <ion-button color="danger" (click)="deleteTodo(todo.id)">Entfernen</ion-button>
-          </ion-buttons>
+          </ion-item>
         </ion-item>
       </ion-list>
   
     <!-- Buttons unter der Liste -->
-      <ion-button ios="add" md="add" (click)="openAddTodoModal()">
-        <ion-icon slot="icon-only" ios="add" md="add"></ion-icon>
+
+      <ion-button expand="block" ios="add" md="add" (click)="openAddTodoModal()">
+        <ion-icon slot="" ios="add" md="add"></ion-icon>
       </ion-button>
       
     </ion-content>

@@ -16,6 +16,10 @@ export class Tab3Page implements OnInit {
     this.loadDelegates();
   }
 
+  ionViewWillEnter() {
+    this.loadDelegates();
+  }
+
   loadDelegates() {
     this.delegates = this.todoService.loadTodos().filter(todo => todo.status === 'delegate');
   }
