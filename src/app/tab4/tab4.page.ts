@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ToDoService } from '../ToDoService';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-tab4',
@@ -9,10 +8,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./tab4.page.scss'],
 })
 export class Tab4Page {
-  private toDoService: ToDoService;
 
-  constructor(private alertController: AlertController, private http: HttpClient) {
-    this.toDoService = new ToDoService(this.http);
+  constructor(private alertController: AlertController, private toDoService: ToDoService) {
+
   }
 
   async confirmResetLocalStorage() {

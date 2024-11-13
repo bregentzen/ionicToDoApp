@@ -26,14 +26,14 @@
 
     <ion-item>
       <ion-label position="stacked">Fälligkeitsdatum</ion-label>
-      <ion-datetime [(ngModel)]="todo.dueDate" name="dueDate"></ion-datetime>
+      <ion-datetime [(ngModel)]="todo.dueDate" name="dueDate" displayFormat="YYYY-MM-DDTHH:mm:ssZ"></ion-datetime>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Status</ion-label>
       <ion-select [(ngModel)]="todo.status" name="status">
         <ion-select-option value="new">Neu</ion-select-option>
-        <ion-select-option value="todo">Zu Erledigen</ion-select-option>
+        <ion-select-option value="todo">ToDo</ion-select-option>
         <ion-select-option value="delegate">Delegiert</ion-select-option>
         <ion-select-option value="done">Erledigt</ion-select-option>
       </ion-select>

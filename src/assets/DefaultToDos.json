@@ -29,7 +29,7 @@
     },
     {
       "title": "Super Mario World",
-      "description": "Ein Jump’n’Run-Spiel",
+      "description": "Ein Jump n Run-Spiel",
       "assignee": "Mario",
       "dueDate": "2022-05-25T00:00:00.000Z",
       "status": "new"

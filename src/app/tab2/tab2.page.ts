@@ -18,7 +18,7 @@ export class Tab2Page implements OnInit {
 
   loadTodos() {
     const state: String = 'todo';
-    this.todos = this.todoService.getTodos().filter(todo => todo.status.status === state);
+    this.todos = this.todoService.loadTodos().filter(todo => todo.status === state);
     this.todos.sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
   }
 }

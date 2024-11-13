@@ -17,6 +17,6 @@ export class Tab3Page implements OnInit {
   }
 
   loadDelegates() {
-    this.delegates = this.todoService.getTodos().filter(todo => todo.status.status === 'delegate');
+    this.delegates = this.todoService.loadTodos().filter(todo => todo.status === 'delegate');
   }
 }

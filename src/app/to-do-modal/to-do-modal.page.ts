@@ -18,6 +18,7 @@ export class ToDoModalPage {
   }
 
   saveTodo() {
+    this.todo.dueDate = new Date('2021-05-10T16:50:00+02:00').toISOString();
     this.modalController.dismiss(this.todo);
   }
 }
