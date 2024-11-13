@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>To-Do Details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Schließen</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form (ngSubmit)="saveTodo()">
+    <ion-item>
+      <ion-label position="stacked">Titel</ion-label>
+      <ion-input [(ngModel)]="todo.title" name="title" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Beschreibung</ion-label>
+      <ion-input [(ngModel)]="todo.description" name="description"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Bearbeiter</ion-label>
+      <ion-input [(ngModel)]="todo.assignee" name="assignee"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Fälligkeitsdatum</ion-label>
+      <ion-datetime [(ngModel)]="todo.dueDate" name="dueDate"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Status</ion-label>
+      <ion-select [(ngModel)]="todo.status" name="status">
+        <ion-select-option value="new">Neu</ion-select-option>
+        <ion-select-option value="todo">Zu Erledigen</ion-select-option>
+        <ion-select-option value="delegate">Delegiert</ion-select-option>
+        <ion-select-option value="done">Erledigt</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-footer>
+      <ion-button expand="block" type="submit">Speichern</ion-button>
+    </ion-footer>
+  </form>
+</ion-content>

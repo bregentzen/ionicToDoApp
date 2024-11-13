@@ -21,21 +21,20 @@
     </ion-header>
   
     <ion-content color="light">
-      <ion-list [inset]="true">
-        <ion-item *ngFor="let todo of todos">
+      <!-- Liste -->
+      <ion-list lines="full">
+        <ion-item *ngFor="let todo of todos" (click)="openTodoDetails(todo)">
           <ion-label>{{ todo.title }}</ion-label>
           <ion-buttons slot="end">
-            <ion-button shape="round" color="warning" (click)="editTodo(todo.id)">Bearbeiten</ion-button>
-            <ion-button shape="round" color="danger" (click)="deleteTodo(todo.id)">Entfernen</ion-button>
+            <ion-button color="danger" (click)="deleteTodo(todo.id)">Entfernen</ion-button>
           </ion-buttons>
         </ion-item>
       </ion-list>
   
-      <ion-button size="large" (click)="addTodo()">
+    <!-- Buttons unter der Liste -->
+      <ion-button ios="add" md="add" (click)="openAddTodoModal()">
         <ion-icon slot="icon-only" ios="add" md="add"></ion-icon>
       </ion-button>
-
-      <ion-button  color="success" (click)="resetLocalStorage()">LocalSotrage Reset</ion-button>
       
     </ion-content>
   
