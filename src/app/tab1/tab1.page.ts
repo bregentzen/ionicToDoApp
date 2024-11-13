@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToDo } from '../todo';
 
 @Component({
   selector: 'app-tab1',
@@ -7,19 +8,19 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  todos: { id: number; title: string }[] = [
-    { id: 1, title: 'Pokémon Yellow' },
-    { id: 2, title: 'Mega Man X' },
-    { id: 3, title: 'The Legend of Zelda' },
-    { id: 4, title: 'Pac-Man' },
-    { id: 5, title: 'Super Mario World' }
+  todos: ToDo[] = [
+    new ToDo('Pokémon Yellow', 'Ein klassisches Spiel', 'Ash', new Date('2022-01-12'), 'new'),
+    new ToDo('Mega Man X', 'Ein Action-Spiel', 'Rock', new Date('2022-02-15'), 'todo'),
+    new ToDo('The Legend of Zelda', 'Ein Abenteuer-Spiel', 'Link', new Date('2022-03-20'), 'delegate'),
+    new ToDo('Pac-Man', 'Ein Arcade-Klassiker', 'Player1', new Date('2022-04-18'), 'done'),
+    new ToDo('Super Mario World', 'Ein Jump’n’Run-Spiel', 'Mario', new Date('2022-05-25'), 'new')
   ];
 
   constructor() {}
 
   addTodo() {
-    const newId = this.todos.length ? Math.max(...this.todos.map(todo => todo.id)) + 1 : 1;
-    this.todos.push({ id: newId, title: 'New Todo' });
+    const newTodo = new ToDo('Neues Todo', 'Beschreibung hier', 'Besitzer hier', new Date(), 'new');
+    this.todos.push(newTodo);
   }
 
   editTodo(id: number) {
@@ -34,6 +35,10 @@ export class Tab1Page {
 
   deleteTodo(id: number) {
     this.todos = this.todos.filter(todo => todo.id !== id);
+  }
+
+  resetLocalStorage() {
+    
   }
 
 }
