@@ -9,7 +9,11 @@ const routes: Routes = [
   {
     path: 'tab4',
     loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
+  },  {
+    path: 'to-do-modal',
+    loadChildren: () => import('./to-do-modal/to-do-modal.module').then( m => m.ToDoModalPageModule)
   }
+
 ];
 @NgModule({
   imports: [
