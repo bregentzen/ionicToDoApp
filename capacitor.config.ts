@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'ms3',
+  appId: 'de.hsos.wa.ms3.todoapp',
+  appName: 'Machwas',
   webDir: 'www'
 };
 
